@@ -1,7 +1,7 @@
 ### Simple React Todo Widget
 
 #### install
-yarm
+yarn
 
 #### run
 yarn start
