@@ -1,10 +1,14 @@
 ### Simple React Todo Widget
 
 #### install
+```
 yarn
+```
 
 #### run
+```
 yarn start
+```
 
 This is a simple widget that you can reuse multiple times on the same page.
 It uses a simple react store to store the todo list of react list items and renders to the ul as todo items are added.
