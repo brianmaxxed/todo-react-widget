@@ -1,0 +1,58 @@
+.TodoWidget {
+  font-family: 'Arial';
+  width: 50rem;
+  background-color: #efefef;
+}
+
+.todoInput {
+  width: 20rem;
+  height: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+  margin: 2rem 0 0.4rem 0;
+}
+.addButton {
+  margin: 0.8rem;
+}
+
+.todoBody {
+  background-color: #dddddd;
+  list-style: none;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  display: inline-block;
+  text-align: left;
+  width: 70%;
+  height: 2rem;
+  line-height: 2.2rem;
+  padding: 0.4rem 0 0.4rem 0;
+  margin: auto;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #cccccc;
+}
+
+.todoBody li span {
+  display: inline-block;
+  width: 85%;
+  padding: 0.1rem;
+  text-indent: 1rem;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.todoBody li button {
+  width: 20px;
+  margin-left: 0.5rem;
+}
+
+.invalid {
+  background-color: rgba(255,0,0,0.2);
+}
