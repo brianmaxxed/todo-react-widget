@@ -56,3 +56,16 @@ li {
 .invalid {
   background-color: rgba(255,0,0,0.2);
 }
+
+.error {
+  align-self: center;
+  text-align: left;
+  width: 28rem;
+  height: 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: auto;
+  padding: 0;
+  // background-color: #ffffff;
+  color: #cc0000;
+}
