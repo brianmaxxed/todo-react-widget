@@ -10,11 +10,12 @@ export default class Moderator extends Component {
         todos: [],
         todoInput: '',
         invalid: '',
+        errorMsg: '',
       }
   }
 
   updateInput(e) {
-    this.setState({todoInput: e.target.value});
+    this.setState({todoInput: e.target.value, invalid: '', errorMsg: ''});
   }
 
   newTodo(key, val) {
@@ -37,31 +38,37 @@ export default class Moderator extends Component {
   addTodo(e) {
     e.preventDefault();
 
-    if (!this.validInput(this.state.todoInput)) {
-      this.setState({invalid: 'invalid'});
+    if (this.state.todoInput === '') {
+      this.setState({invalid: 'invalid', errorMsg: 'todo can\'t be empty.'});
       return;
-    } else if (this.state.invalid !== '') {
-        this.setState({invalid: ''});
+    } else if (!this.validInput(this.state.todoInput)) {
+      this.setState({invalid: 'invalid', errorMsg: 'no invalid input.'});
+      return;
     }
 
-    this.state.todos.push(this.newTodo(this.state.todos.length, this.state.todoInput));
-    this.setState({todos: this.state.todos, todoInput: ''});
+    const todos = Object.assign([], this.state.todos);
+    todos.push(this.newTodo(todos.length, this.state.todoInput));
+    this.setState({todos, todoInput: '', invalid: '', errorMsg: ''});
   }
 
   deleteTodo(e) {
     e.preventDefault();
-    const todos = this.state.todos;
+    const todos = Object.assign([], this.state.todos);
 
     todos.splice(e.target.parentElement.dataset.index, 1);
     todos.forEach((item, idx) => {
       todos[idx] = this.newTodo(idx, item.props.children[0].props.children);
     });
 
-    this.setState(todos);
+    this.setState({todos});
   }
 
   submitForm(e) {
     e.preventDefault();
+    if (this.state.todoInput === '') {
+      this.setState({invalid: '', errorMsg: ''});
+    }
+
     const todos = this.state.todos.map(t => t.props.children[0].props.children);
     console.log(todos);
   }
@@ -74,6 +81,7 @@ export default class Moderator extends Component {
           <button onClick={this.addTodo.bind(this)} value="" className="addButton">+</button>
           <button onClick={this.submitForm.bind(this)} value="" className="submitButton">Submit</button>
         </div>
+        <div className={this.state.errorMsg > '' ? 'error errorOff' : 'error errorOn'}>{this.state.errorMsg}</div>
         <ul className="todoBody">
           {this.state.todos}
         </ul>
